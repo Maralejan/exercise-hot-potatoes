@@ -65,12 +65,13 @@ li{
 	margin: 0.7rem 0;
 }
 
-/* MISMO PADDING: 13px para enlaces y botón */
+/* ESTILOS BASE COMUNES: MISMO PADDING, MISMO MARGEN, MISMO ANCHO */
 .card a,
 .dropdown-btn {
 	display: block;
 	width: 100%;
 	padding: 13px;
+	margin: 0;               /* ← ELIMINA CUALQUIER MARGEN EXTRA */
 	text-decoration: none;
 	border-radius: 10px;
 	background: var(--primary);
@@ -85,6 +86,7 @@ li{
 	box-sizing: border-box;
 }
 
+/* Hover idéntico */
 .card a:hover,
 .dropdown-btn:hover {
 	background: var(--secondary);
@@ -92,6 +94,7 @@ li{
 	box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
+/* Para el botón: solo añade flex para la flecha, sin afectar dimensiones */
 .dropdown-btn {
 	display: flex;
 	justify-content: space-between;
@@ -114,6 +117,7 @@ li{
 	transform: rotate(180deg);
 }
 
+/* CONTENEDOR DESPLEGABLE */
 .dropdown-content{
 	max-height: 0;
 	overflow: hidden;
@@ -138,6 +142,7 @@ li{
 	border-left: 5px solid var(--primary);
 	transition: all 0.3s ease;
 	counter-increment: item;
+	box-sizing: border-box;
 }
 
 .dropdown-content a::before{
@@ -161,6 +166,7 @@ li{
 	border-left-color: var(--secondary);
 }
 
+/* FOOTER */
 .footer{
 	margin-top: 3rem;
 	background: linear-gradient(135deg, #312e81, #4f46e5);
@@ -204,7 +210,7 @@ li{
 <body>
 
 <div class="container">
-	<div class="title">Fundamentos de Pruebas de Software</div>
+	<div class="title">Test Fundamentos de Pruebas de Software</div>
 	<div class="subtitle">Actividades interactivas para la comprensión de conceptos clave</div>
 
 	<div class="card">

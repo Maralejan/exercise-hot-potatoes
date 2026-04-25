@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Aprende Pruebas de Software Jugando</title>
 
 <style>
@@ -64,72 +63,71 @@ li{
 	margin: 0.7rem 0;
 }
 
-/* BOTONES PRINCIPALES */
-a{
-	display: block;
+/* ============================================
+   ESTILO IDÉNTICO para BOTÓN DROPDOWN y LINKS
+   ============================================ */
+/* Estilos base comunes: TODOS los elementos tipo botón desplegable 
+   y los enlaces normales se ven EXACTAMENTE iguales */
+.card a,
+.dropdown-btn {
+	display: block;            /* Ocupa todo el ancho */
+	width: 100%;
 	padding: 13px;
 	text-decoration: none;
 	border-radius: 10px;
 	background: var(--primary);
 	color: white;
 	font-weight: 500;
-	transition: 0.3s;
-}
-
-a:hover{
-	background: var(--secondary);
-	transform: translateY(-2px);
-	box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-}
-
-/* =========================
-   DROPDOWN PRO
-========================= */
-
-.dropdown-btn{
-	width: 100%;
-	padding: 13px;
-	border: none;
-	border-radius: 10px;
-
-	background: var(--primary);
-	color: white;
-	font-weight: 500;
 	font-size: 1rem;
-
+	font-family: var(--font);
+	transition: 0.3s;
+	border: none;
+	box-sizing: border-box;
 	cursor: pointer;
+	text-align: left;
+}
 
+/* FLEX solo para el botón (para alinear texto y flecha) 
+   respetando la misma apariencia visual */
+.dropdown-btn {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 10px;
-
-	transition: 0.3s;
 }
 
-.dropdown-btn:hover{
+/* Elimina cualquier borde/foco extra que pueda romper la identidad */
+.dropdown-btn:focus {
+	outline: none;
+}
+
+/* El texto interno del botón ocupa el espacio flexible */
+.dropdown-text {
+	flex: 1;
+	text-align: left;
+}
+
+/* FLECHA mantiene estilo neutro y no altera el color base */
+.arrow {
+	font-size: 0.9rem;
+	transition: transform 0.3s ease;
+	color: white;
+}
+
+.arrow.rotate {
+	transform: rotate(180deg);
+}
+
+/* HOVER idéntico para ambos: enlaces y botón */
+.card a:hover,
+.dropdown-btn:hover {
 	background: var(--secondary);
 	transform: translateY(-2px);
 	box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-.dropdown-text{
-	flex: 1;
-	text-align: left;
-}
-
-/* FLECHA */
-.arrow{
-	font-size: 0.9rem;
-	transition: transform 0.3s ease;
-}
-
-.arrow.rotate{
-	transform: rotate(180deg);
-}
-
-/* CONTENEDOR */
-.dropdown-content{
+/* CONTENEDOR DESPLEGABLE (dropdown items) */
+.dropdown-content {
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.4s ease;
@@ -138,53 +136,40 @@ a:hover{
 	counter-reset: item;
 }
 
-/* ITEMS */
-.dropdown-content a{
+/* Estilos de los elementos internos del menú desplegable 
+   (se mantiene el diseño original pero armonizado) */
+.dropdown-content a {
 	display: flex;
 	align-items: center;
 	gap: 12px;
-
 	padding: 13px;
 	border-radius: 10px;
 	margin: 6px 0;
-
 	font-size: 1rem;
 	font-weight: 500;
-
 	background: #eef2ff;
 	color: var(--primary);
-
 	text-decoration: none;
-
 	border-left: 5px solid var(--primary);
-
 	transition: all 0.3s ease;
-
 	counter-increment: item;
 }
 
-/* NUMERACIÓN */
-.dropdown-content a::before{
+.dropdown-content a::before {
 	content: counter(item);
-
 	min-width: 32px;
 	height: 32px;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	background: var(--primary);
 	color: white;
-
 	font-size: 0.95rem;
 	font-weight: bold;
-
 	border-radius: 50%;
 }
 
-/* HOVER */
-.dropdown-content a:hover{
+.dropdown-content a:hover {
 	background: #e0e7ff;
 	transform: translateX(8px);
 	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -233,7 +218,6 @@ a:hover{
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -243,33 +227,29 @@ a:hover{
 
 	<div class="card">
 		<ul>
+			<li><a href="SeleccionOpcionCorrecta.htm">Evaluación de selección de respuesta correcta en preguntas de opción múltiple</a></li>
 
-<li><a href="SeleccionOpcionCorrecta.htm">Evaluación de selección de respuesta correcta en preguntas de opción múltiple</a></li>
+			<li>
+				<!-- BOTÓN CON ESTILO IDÉNTICO A LOS ENLACES -->
+				<button class="dropdown-btn">
+					<span class="dropdown-text">Actividades de Secuenciación de Procesos en Pruebas de Software</span>
+					<span class="arrow">▼</span>
+				</button>
 
-<li>
-	<button class="dropdown-btn">
-		Actividades de Secuenciación de Procesos en Pruebas de Software
-		<span class="arrow">▼</span>
-	</button>
+				<div class="dropdown-content">
+					<a href="Ordenar1ProcesoPruebas.html">Ordenamiento lógico del proceso de pruebas de software</a>
+					<a href="Ordenar2DisenocasosPruebas.htm">Secuenciación del diseño de casos de prueba</a>
+					<a href="Ordenar3PruebasDinamicas.htm">Organización del flujo de ejecución en pruebas dinámicas</a>
+					<a href="Ordenar4TiposRegresion.htm">Identificación y orden de tipos de regresión en software</a>
+					<a href="Ordenar5RolesPruebas.htm">Secuencia de roles involucrados en el proceso de pruebas (RUP)</a>
+				</div>
+			</li>
 
-	<div class="dropdown-content">
-
-		<a href="Ordenar1ProcesoPruebas.html">Ordenamiento lógico del proceso de pruebas de software</a>
-		<a href="Ordenar2DisenocasosPruebas.htm">Secuenciación del diseño de casos de prueba</a>
-		<a href="Ordenar3PruebasDinamicas.htm">Organización del flujo de ejecución en pruebas dinámicas</a>
-		<a href="Ordenar4TiposRegresion.htm">Identificación y orden de tipos de regresión en software</a>
-		<a href="Ordenar5RolesPruebas.htm">Secuencia de roles involucrados en el proceso de pruebas (RUP)</a>
-
-	</div>
-</li>
-
-<li><a href="Crucigrama.htm">Identificación de conceptos clave sobre estrategias de pruebas</a></li>
-<li><a href="CompletarOracion.htm">Completación de enunciados técnicos sobre pruebas de software</a></li>
-<li><a href="Unir_Emparejar.htm">Selección de definiciones asociadas a conceptos de pruebas de software</a></li>
-
+			<li><a href="Crucigrama.htm">Identificación de conceptos clave sobre estrategias de pruebas</a></li>
+			<li><a href="CompletarOracion.htm">Completación de enunciados técnicos sobre pruebas de software</a></li>
+			<li><a href="Unir_Emparejar.htm">Selección de definiciones asociadas a conceptos de pruebas de software</a></li>
 		</ul>
 	</div>
-
 </div>
 
 <footer class="footer">
@@ -288,27 +268,25 @@ a:hover{
 			<p><strong>Tutor:</strong> Ing. José Grado</p>
 		</div>
 	</div>
-
 	<div class="footer-bottom">
 		© 2026 - Proyecto Académico de Pruebas de Software
 	</div>
 </footer>
 
 <script>
-const btn = document.querySelector(".dropdown-btn");
-const content = document.querySelector(".dropdown-content");
-const arrow = document.querySelector(".arrow");
+	const btn = document.querySelector(".dropdown-btn");
+	const content = document.querySelector(".dropdown-content");
+	const arrow = document.querySelector(".arrow");
 
-btn.addEventListener("click", () => {
-	if(content.style.maxHeight){
-		content.style.maxHeight = null;
-		arrow.classList.remove("rotate");
-	}else{
-		content.style.maxHeight = content.scrollHeight + "px";
-		arrow.classList.add("rotate");
-	}
-});
+	btn.addEventListener("click", () => {
+		if(content.style.maxHeight){
+			content.style.maxHeight = null;
+			arrow.classList.remove("rotate");
+		} else {
+			content.style.maxHeight = content.scrollHeight + "px";
+			arrow.classList.add("rotate");
+		}
+	});
 </script>
-
 </body>
 </html>

@@ -92,12 +92,24 @@ a:hover{
 	color: white;
 	font-weight: 600;
 	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	transition: 0.3s;
 }
 
 .dropdown-btn:hover{
 	transform: translateY(-2px);
 	box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* FLECHA */
+.arrow{
+	transition: transform 0.3s ease;
+}
+
+.arrow.rotate{
+	transform: rotate(180deg);
 }
 
 .dropdown-content{
@@ -119,7 +131,7 @@ a:hover{
 	transform: translateX(6px);
 }
 
-/* FOOTER PRO */
+/* FOOTER */
 .footer{
 	margin-top: 3rem;
 	background: linear-gradient(135deg, #1f2937, #111827);
@@ -133,7 +145,6 @@ a:hover{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 1.5rem;
-	text-align: left;
 }
 
 .footer h3{
@@ -180,10 +191,12 @@ a:hover{
 
 <li><a href="SeleccionOpcionCorrecta.htm">Evaluación de selección de respuesta correcta en preguntas de opción múltiple</a></li>
 
-<!-- DROPDOWN -->
+<!-- DROPDOWN PRO -->
 <li>
+
 	<button class="dropdown-btn">
-		Ejercicios de Secuenciación y Ordenamiento
+		<span>Actividades de Secuenciación de Procesos en Pruebas de Software</span>
+		<span class="arrow">▼</span>
 	</button>
 
 	<div class="dropdown-content">
@@ -199,6 +212,7 @@ a:hover{
 		<a href="Ordenar5RolesPruebas.htm">Secuencia de roles involucrados en el proceso de pruebas (RUP)</a>
 
 	</div>
+
 </li>
 
 <li><a href="Crucigrama.htm">Identificación de conceptos clave sobre estrategias de pruebas</a></li>
@@ -240,12 +254,15 @@ a:hover{
 <script>
 const btn = document.querySelector(".dropdown-btn");
 const content = document.querySelector(".dropdown-content");
+const arrow = document.querySelector(".arrow");
 
 btn.addEventListener("click", () => {
 	if(content.style.maxHeight){
 		content.style.maxHeight = null;
+		arrow.classList.remove("rotate");
 	}else{
 		content.style.maxHeight = content.scrollHeight + "px";
+		arrow.classList.add("rotate");
 	}
 });
 </script>
